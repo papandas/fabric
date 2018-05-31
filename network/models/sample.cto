@@ -1,6 +1,4 @@
-/**
- * Zero To Blockchain multi-party finance network
- */
+
 namespace org.acme.Z2BTestNetwork
 import composer.base.*
 import composer.events.*
@@ -42,7 +40,7 @@ asset Order identified by orderNumber {
     o String resolve
     o String backorder
     o String refund
-    --> Buyer buyer
+    --> Buyer  
     --> Seller seller 
 
 }
