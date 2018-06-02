@@ -46,12 +46,7 @@ if (cfenv.getAppEnv().isLocal == true)
   else
   { var server = app.listen(app.get('port'), function() {console.log('Listening remotely on port %d', server.address().port);}); }
   
-/**
- * load any file requested on the server
- * @param {express.req} req - the inbound request object from the client
- * @param {express.res} res - the outbound response object for communicating back to client
- * @function
- */
+
 function loadSelectedFile(req, res) {
     var uri = req.originalUrl;
     var filename = __dirname + "/HTML" + uri;
@@ -69,12 +64,8 @@ function loadSelectedFile(req, res) {
         });
 }
 
-/**
- * display using console.log the properties of each property in the inbound object
- * @param {displayObjectProperties} _string - string name of object
- * @param {displayObjectProperties}  _object - the object to be parsed
- * @utility
- */
+
+
 function displayObjectValues (_string, _object)
 {
   for (prop in _object){
