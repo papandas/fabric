@@ -1,6 +1,43 @@
+'use strict';
+
 let msgPort = null;
 let _blctr = 0;
 
+function loadAdminUX(){
+    let toLoad = 'admin.html';
+    $.when($.get(toLoad)).done(function(page){
+        $('#body').empty();
+        $('#body').append(page);
+        updatePage('admin');
+        listMemRegistries();
+    })
+}
+
+function listMemRegistries(){
+    $.when($.get('/composer/admin/getRegistries')).done(function(_results){
+        $('#registryName').empty();
+        let _str = '';
+        _str += '<h2>Registry List</h2>';
+        _str += '<h4>Network update results: '+_results.result+'</h4>';
+        _str += '<ul>';
+
+        for (let each in _results.registries){
+            (function(_idx, _arr){
+                _str += '<li>'+_arr[_idx]+'</li>';
+                $('#registryName').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+                $('#registryName2').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+                $('#registryName3').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+                $('#registryName4').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+                $('#registryName5').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+            })(each, _results.registries)
+        }
+
+        _str += '</ul>';
+
+        $('#admin-forms').empty();
+        $('#admin-forms').append(_str);
+    });
+}
 
 function wsDisplay(_target, _port)
 {

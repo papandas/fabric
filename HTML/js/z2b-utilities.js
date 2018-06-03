@@ -25,10 +25,16 @@ function updatePage(_page){
     console.log("Update Page >> ", _page);
     for (each in textPrompts[_page]){
         (function(_idx, _array){
-            console.log("[#id]", _idx, "[#value]", getDisplaytext(_page, _idx))
+            //console.log("[#id]", _idx, "[#value]", getDisplaytext(_page, _idx))
             $("#"+_idx).empty();
             $("#"+_idx).append(getDisplaytext(_page, _idx));
         })(each, textPrompts[_page])
+    }
+
+    if(_page == 'index'){
+        $('#blockchain').show();
+    }else{
+        $('#blockchain').hide();
     }
 }
 

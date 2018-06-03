@@ -24,5 +24,7 @@ router.get('/api/getSupportedLanguages*',multi_lingual.languages);
 router.get('/api/getTextLocations*',multi_lingual.locations);
 router.post('/api/selectedPrompts*',multi_lingual.prompts);
 
+router.get('/composer/admin/getRegistries*', hlcAdmin.getRegistries);
+
 
 router.post('/composer/admin/getMembers*', hlcAdmin.getMembers);
