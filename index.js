@@ -41,10 +41,16 @@ app.use(bodyParser.json());
 
 app.use('/', require("./controller/restapi/router"));
 
-if (cfenv.getAppEnv().isLocal == true)
-  { var server = app.listen(app.get('port'), function() {console.log('Listening locally on port %d', server.address().port);}); }
-  else
-  { var server = app.listen(app.get('port'), function() {console.log('Listening remotely on port %d', server.address().port);}); }
+if (cfenv.getAppEnv().isLocal == true){ 
+    //console.log("index.js loking for port",app.get('port'))
+    var server = app.listen(app.get('port'), function() {
+        console.log('Listening locally on port %d', server.address().port);
+    }); 
+}else{ 
+    var server = app.listen(app.get('port'), function() {
+        console.log('Listening remotely on port %d', server.address().port);
+    }); 
+}
   
 
 function loadSelectedFile(req, res) {

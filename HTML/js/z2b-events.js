@@ -33,9 +33,7 @@ function deferredMemberLoad()
   options3.registry = 'Provider';
   var options4 = {};
   options4.registry = 'Shipper';
-  $.when($.post('/composer/admin/getMembers', options), $.post('/composer/admin/getMembers', options2),
-      $.post('/composer/admin/getMembers', options3), $.post('/composer/admin/getMembers', options4)).done(function (_sellers, _buyers, _providers, _shippers)
-    { 
+  $.when($.post('/composer/admin/getMembers', options), $.post('/composer/admin/getMembers', options2), $.post('/composer/admin/getMembers', options3), $.post('/composer/admin/getMembers', options4)).done(function (_sellers, _buyers, _providers, _shippers){ 
       console.log('buyers: ',_buyers);
       buyers = _buyers[0].members;
       sellers = _sellers[0].members;

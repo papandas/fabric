@@ -1,37 +1,14 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 // z2c-utilities.js 
 
 
-/**
-  * creates a set of utilities inside the named space: z2c
- * All utilities are accessed as z2c.functionName()
-* @namespace - z2c
- */
+
 languages = {}, // getSupportedLanguages
 selectedLanguage = {},
 language = "",
 textLocations = {}, // getTextLocations
 textPrompts = {}, // getSelectedPromots
 
-/**
-* get the value associated with a cookie named in the input
-* Refer to this by {@link getCookieValue}.
-* @param {String} _name  - the name of the cookie to find
-* @namespace 
-*/
+
 function getCookieValue(_name)
 {
   var name = _name+"=";
@@ -43,13 +20,7 @@ function getCookieValue(_name)
       return("");
 }
 
-/**
-* trims a string by removing all leading and trailing spaces
-* trims the final period, if it exists, from a string.
-* Refer to this by {@link trimStrip}.
-* @param {String} _string String to be trimmed and stripped of trailing period
-* @namespace 
-*/
+
 function trimStrip(_string)
 {
   var str = _string.trim();
@@ -66,8 +37,12 @@ function trimStrip(_string)
 */
 function updatePage(_page)
 {
-  for (each in textPrompts[_page]){(function(_idx, _array)
-    {$("#"+_idx).empty();$("#"+_idx).append(getDisplaytext(_page, _idx));})(each, textPrompts[_page])}
+  for (each in textPrompts[_page]){
+    (function(_idx, _array){
+      $("#"+_idx).empty();
+      $("#"+_idx).append(getDisplaytext(_page, _idx));
+    })(each, textPrompts[_page])
+  }
 }
 
 /**
@@ -137,24 +112,14 @@ function getSupportedLanguages()
 function getTextLocationsfunction ()
 {$.when($.get('/api/getTextLocations')).done(function(_res){textLocations = _res; console.log(_res); });}
 
-/**
-* returns a JSON object with the text to be used to update identified pages and objects
-* Refer to this by {@link getSelectedPrompts}.
-* @param {String} _inbound 
-* @namespace 
-*/
+
 function getSelectedPrompts(_inbound)
 {  selectedLanguage=languages[_inbound];
   var options = {}; options.language = _inbound;
   $.when($.post('/api/selectedPrompts', options)).done(function(_res){textPrompts = _res; console.log(_res); });
 }
 
-/**
-* retrieves the prompts for the requested language from the server
-* Refer to this by {@link qOnSelectedPrompts}.
-* @param {String} _inbound - string representing the requested language
-* @namespace 
-*/
+
 function qOnSelectedPrompts(_inbound)
 {
   var d_prompts = $.Deferred();
@@ -163,24 +128,13 @@ function qOnSelectedPrompts(_inbound)
   return d_prompts.promise();
 }
 
-/**
-* function to display the properties of an object using console.log
-* Refer to this by {@link displayObjectProperties}.
-* @param {Object} _obj - the object whose properties are to be displayed
-* @namespace 
-*/
+
 function displayObjectProperties(_obj)
 {
   for(var propt in _obj){ console.log("object property: "+propt ); }
 }
 
-/**
-* function to display the values of every property in an object. If the type of a property is object or function, then the word 'object' or 'function' is displayed
-* Refer to this by {@link displayObjectValues}.
-* @param {String} _string - an arbitrary string to preface the printing of the object property name and value. often used to display the name of the object being printed
-* @param {Object} _object - the object to be introspected
-* @namespace 
-*/
+
 function  displayObjectValues(_string, _object)
 {
   for (prop in _object){
@@ -188,17 +142,7 @@ function  displayObjectValues(_string, _object)
     }
 }
 
-/**
- * get the value associated with a cookie named in the input
- * Inspired by http://bit.ly/juSAWl
- * Augment String.prototype to allow for easier formatting.  This implementation
- * doesn't completely destroy any existing String.prototype.format functions,
- * and will stringify objects/arrays.
- * Refer to this by {@link <string>.format}.
- * @param {String} this  - the string to be formatted
- * @param {String} arg - comma delimited set of strings or ints to be inserted into this
-* string.format
-*/
+
 
 String.prototype.format = function(i, safe, arg) {
 
@@ -280,13 +224,15 @@ function displayAPI(_api)
  */
 function formatMessage(_msg) {return '<p class="message">'+_msg+'</p>';}
 
-/**
- * get the web socket port
- */
+
 function getPort ()
 {
-  if (msgPort == null)
-  { $.when($.get('/setup/getPort')).done(function (port){console.log('port is: '+port.port); msgPort = port.port;});}
+  if (msgPort == null){ 
+    $.when($.get('/setup/getPort')).done(function (port){
+      console.log('port is: '+port.port); 
+      msgPort = port.port;
+    });
+  }
 }
 /**
  * toggle an accordian window

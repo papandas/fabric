@@ -19,7 +19,11 @@ exports.getMyOrders = function (req, res, next) {
     console.log(method+' req.body.userID is: '+req.body.userID );
     let allOrders = new Array();
     let businessNetworkConnection;
-    if (svc.m_connection === null) {svc.createMessageSocket();}
+
+    if (svc.m_connection === null) {
+        svc.createMessageSocket();
+    }
+
     let ser;
     let archiveFile = fs.readFileSync(path.join(path.dirname(require.main.filename),'network','dist','zerotoblockchain-network.bna'));
     businessNetworkConnection = new BusinessNetworkConnection();
@@ -37,25 +41,24 @@ exports.getMyOrders = function (req, res, next) {
             return businessNetworkConnection.query('selectOrders')
             .then((orders) => {
                 allOrders = new Array();
-                for (let each in orders)
-                    { (function (_idx, _arr)
-                        {
+                for (let each in orders){
+                    (function (_idx, _arr){
                         let _jsn = ser.toJSON(_arr[_idx]);
                         _jsn.id = _arr[_idx].orderNumber;
                         allOrders.push(_jsn);
                     })(each, orders);
                 }
                 res.send({'result': 'success', 'orders': allOrders});
-            })
-            .catch((error) => {console.log('selectOrders failed ', error);
+            }).catch((error) => {
+                console.log('[getMyOrders] selectOrders failed ', error);
                 res.send({'result': 'failed', 'error': 'selectOrders: '+error.message});
             });
-        })
-        .catch((error) => {console.log('businessNetwork connect failed ', error);
+        }).catch((error) => {
+            console.log('[getMyOrders] businessNetwork connect failed ', error);
             res.send({'result': 'failed', 'error': 'businessNetwork: '+error.message});
         });
-    })
-    .catch((error) => {console.log('create bnd from archive failed ', error);
+    }).catch((error) => {
+        console.log('[getMyOrders] create bnd from archive failed ', error);
         res.send({'result': 'failed', 'error': 'create bnd from archive: '+error.message});
     });
 };
@@ -75,7 +78,7 @@ exports.getItemTable = function (req, res, next)
 
 exports.orderAction = function (req, res, next) {
     let method = 'orderAction';
-    console.log(method+' req.body.participant is: '+req.body.participant );
+    console.log('[orderAction] '+method+' req.body.participant is: '+req.body.participant );
     if ((req.body.action === 'Dispute') && (typeof(req.body.reason) !== 'undefined') && (req.body.reason.length > 0) )
     {/*let reason = req.body.reason;*/}
     else {
@@ -101,56 +104,93 @@ exports.orderAction = function (req, res, next) {
                 order.status = req.body.action;
                 switch (req.body.action)
                 {
+                case 'Pay':
+
+                break;
                 case 'Dispute':
                     console.log('Dispute entered');
-                    // ========> Your Code Goes Here <=========
+                    updateOrder = factory.newTransaction(NS, 'Dispute');
+                    updateOrder.financeCo = factory.newRelationship(NS, 'FinanceCo', financeCoID);
+                    updateOrder.buyer = factory.newRelationship(NS, 'Buyer', order.buyer.$identifier);
+                    updateOrder.seller = factory.newRelationship(NS, 'Seller', order.seller.$identifier);
+                    updateOrder.dispute = req.body.reason;
                     break;
                 case 'Purchase':
                     console.log('Purchase entered');
-                    // ========> Your Code Goes Here <=========
+                    updateOrder = factory.newTransaction(NS, 'Buy');
+                    updateOrder.buyer = factory.newRelationship(NS, 'Buyer', order.buyer.$identifier);
+                    updateOrder.seller = factory.newRelationship(NS, 'Seller', order.seller.$identifier);
+                    break;
+                case 'Order From Supplier':
+
+                    break;
+                case 'Request Payment':
+
+                    break;
+                case 'Refund':
+
                     break;
                 case 'Resolve':
                     console.log('Resolve entered');
-                    // ========> Your Code Goes Here <=========
+                    updateOrder = factory.newTransaction(NS, 'Resolve');
+                    updateOrder.buyer = factory.newRelationship(NS, 'Buyer', order.buyer.$identifier);
+                    updateOrder.shipper = factory.newRelationship(NS, 'Shipper', order.shipper.$identifier);
+                    updateOrder.provider = factory.newRelationship(NS, 'Provider', order.provider.$identifier);
+                    updateOrder.seller = factory.newRelationship(NS, 'Seller', order.seller.$identifier);
+                    updateOrder.financeCo = factory.newRelationship(NS, 'FinanceCo', financeCoID);
+                    updateOrder.resolve = req.body.reason;
+                    break;
+                case 'Request Shipping':
+
+                    break;
+                case 'Update Delivery Status':
+                    break;
+                case 'Delivered':
+
+                    break;
+                case 'BackOrder':
+
                     break;
                 case 'Authorize Payment':
                     console.log('Authorize Payment entered');
-                    // ========> Your Code Goes Here <=========
+                    updateOrder = factory.newTransaction(NS, 'AuthorizePayment');
+                    updateOrder.buyer = factory.newRelationship(NS, 'Buyer', order.buyer.$identifier);
+                    updateOrder.financeCo = factory.newRelationship(NS, 'FinanceCo', financeCoID);
                     break;
                 case 'Cancel':
                     console.log('Cancel entered');
-                    // ========> Your Code Goes Here <=========
+                    updateOrder = factory.newTransaction(NS, 'OrderCancel');
+                    updateOrder.buyer = factory.newRelationship(NS, 'Buyer', order.buyer.$identifier);
+                    updateOrder.seller = factory.newRelationship(NS, 'Seller', order.seller.$identifier);
                     break;
                 default :
-                    console.log('default entered for action: '+req.body.action);
+                    console.log('[orderAction] default entered for action: '+req.body.action);
                     res.send({'result': 'failed', 'error':' order '+req.body.orderNo+' unrecognized request: '+req.body.action});
                 }
                 updateOrder.order = factory.newRelationship(NS, 'Order', order.$identifier);
                 return businessNetworkConnection.submitTransaction(updateOrder)
                 .then(() => {
-                    console.log(' order '+req.body.orderNo+' successfully updated to '+req.body.action);
+                    console.log('[orderAction] order '+req.body.orderNo+' successfully updated to '+req.body.action);
                     res.send({'result': ' order '+req.body.orderNo+' successfully updated to '+req.body.action});
-                })
-                .catch((error) => {
-                    if (error.message.search('MVCC_READ_CONFLICT') !== -1)
-                        {console.log(' retrying assetRegistry.update for: '+req.body.orderNo);
+                }).catch((error) => {
+                    if (error.message.search('MVCC_READ_CONFLICT') !== -1){
+                        console.log(' retrying assetRegistry.update for: '+req.body.orderNo);
                         svc.loadTransaction(svc.m_connection, updateOrder, req.body.orderNo, businessNetworkConnection);
+                    }else{
+                        console.log('[orderAction] '+req.body.orderNo+' submitTransaction to update status to '+req.body.action+' failed with text: ',error.message);
                     }
-                    else
-                    {console.log(req.body.orderNo+' submitTransaction to update status to '+req.body.action+' failed with text: ',error.message);}
                 });
 
-            })
-            .catch((error) => {
-                console.log('Registry Get Order failed: '+error.message);
+            }).catch((error) => {
+                console.log('[orderAction] Registry Get Order failed: '+error.message);
                 res.send({'result': 'failed', 'error': 'Registry Get Order failed: '+error.message});
             });
-        })
-        .catch((error) => {console.log('Get Asset Registry failed: '+error.message);
+        }).catch((error) => {
+            console.log('[orderAction] Get Asset Registry failed: '+error.message);
             res.send({'result': 'failed', 'error': 'Get Asset Registry failed: '+error.message});
         });
-    })
-    .catch((error) => {console.log('Business Network Connect failed: '+error.message);
+    }).catch((error) => {
+        console.log('[orderAction] Business Network Connect failed: '+error.message);
         res.send({'result': 'failed', 'error': 'Get Asset Registry failed: '+error.message});
     });
 };
@@ -190,13 +230,31 @@ exports.addOrder = function (req, res, next) {
         })(each, req.body.items);
         }
         // create the buy transaction
+        const createNew = factory.newTransaction(NS, 'CreateOrder');
 
+        createNew.order = factory.newRelationship(NS, 'Order', order.$identifier);
+        createNew.buyer = factory.newRelationship(NS, 'Buyer', req.body.buyer);
+        createNew.seller = factory.newRelationship(NS, 'Seller', req.body.seller);
+        createNew.financeCo = factory.newRelationship(NS, 'FinanceCo', financeCoID);
+        createNew.amount = order.amount;
         // add the order to the asset registry.
         return businessNetworkConnection.getAssetRegistry(NS+'.Order')
         .then((assetRegistry) => {
             return assetRegistry.add(order)
                 .then(() => {
-                    // ========> Your Code Goes Here <=========
+                    return businessNetworkConnection.submitTransaction(createNew)
+                    .then(() => {
+                        console.log('[addOrder] order '+orderNo+' successfully added');
+                        res.send({'result': ' order '+orderNo+' successfully added'});
+                    })
+                    .catch((error) => {
+                        if (error.message.search('MVCC_READ_CONFLICT') !== -1)
+                            {console.log('[addOrder] ' + orderNo+' retrying assetRegistry.add for: '+orderNo);
+                            svc.loadTransaction(createNew, orderNo, businessNetworkConnection);
+                        }
+                        else
+                        {console.log(orderNo+' submitTransaction failed with text: ',error.message);}
+                    });
                 })
                 .catch((error) => {
                     if (error.message.search('MVCC_READ_CONFLICT') !== -1)
@@ -209,14 +267,12 @@ exports.addOrder = function (req, res, next) {
                         res.send({'result': 'failed', 'error':' order '+orderNo+' getAssetRegistry failed '+error.message});
                     }
                 });
-        })
-        .catch((error) => {
-            console.log(orderNo+' getAssetRegistry failed: ',error.message);
+        }).catch((error) => {
+            console.log('[addOrder] ' + orderNo+' getAssetRegistry failed: ',error.message);
             res.send({'result': 'failed', 'error':' order '+orderNo+' getAssetRegistry failed '+error.message});
         });
-    })
-    .catch((error) => {
-        console.log(orderNo+' business network connection failed: text',error.message);
+    }).catch((error) => {
+        console.log('[addOrder] ' + orderNo+' business network connection failed: text',error.message);
         res.send({'result': 'failed', 'error':' order '+orderNo+' add failed on on business network connection '+error.message});
     });
 };

@@ -13,11 +13,11 @@ function loadAdminUX(){
     })
 }
 
-function wsDisplay(_target, _port)
-{
+function wsDisplay(_target, _port){
     let content = $('#'+_target);
     let wsSocket = new WebSocket('ws://localhost:'+_port);
     wsSocket.onopen = function () {
+        console.log("[admin::wsDisplay(Targer::"+_target+",Port::"+_port+")]")
         wsSocket.send('connected to client');
     };
     wsSocket.onmessage = function (message) {
