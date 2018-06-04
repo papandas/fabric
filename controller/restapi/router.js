@@ -28,3 +28,4 @@ router.get('/composer/admin/getRegistries*', hlcAdmin.getRegistries);
 
 
 router.post('/composer/admin/getMembers*', hlcAdmin.getMembers);
+router.post('/composer/admin/getAssets*', hlcAdmin.getAssets);

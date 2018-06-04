@@ -30,11 +30,11 @@ function updatePage(_page){
             $("#"+_idx).append(getDisplaytext(_page, _idx));
         })(each, textPrompts[_page])
     }
-
+    let content = $('#blockchain');
     if(_page == 'index'){
-        $('#blockchain').show();
+        $(content).show();
     }else{
-        $('#blockchain').hide();
+        $(content).hide();
     }
 }
 

@@ -13,6 +13,31 @@ function loadAdminUX(){
     })
 }
 
+function wsDisplay(_target, _port)
+{
+    let content = $('#'+_target);
+    let wsSocket = new WebSocket('ws://localhost:'+_port);
+    wsSocket.onopen = function () {
+        wsSocket.send('connected to client');
+    };
+    wsSocket.onmessage = function (message) {
+        content.append(formatMessage(message.data));
+    };
+    wsSocket.onerror = function (error) {
+        console.log('WebSocket error on wsSocket: ' + error);
+    };
+}
+
+
+function preLoad(){
+    $('#body').empty();
+    let options = {};
+    $.when($.post('/setup/autoLoad', options)).done(function(_results){
+        msgPort = _results.port;
+        wsDisplay('body', msgPort);
+    });
+}
+
 function listMemRegistries(){
     $.when($.get('/composer/admin/getRegistries')).done(function(_results){
         $('#registryName').empty();
@@ -39,29 +64,17 @@ function listMemRegistries(){
     });
 }
 
-function wsDisplay(_target, _port)
+function listAssets()
 {
-    let content = $('#'+_target);
-    let wsSocket = new WebSocket('ws://localhost:'+_port);
-    wsSocket.onopen = function () {
-        wsSocket.send('connected to client');
-    };
-    wsSocket.onmessage = function (message) {
-        content.append(formatMessage(message.data));
-    };
-    wsSocket.onerror = function (error) {
-        console.log('WebSocket error on wsSocket: ' + error);
-    };
+    let options = {};
+    options.registry = 'Order';
+    options.type='admin';
+    $.when($.post('/composer/admin/getAssets', options)).done(function (_results){
+        console.log(_results);
+    })
+
 }
 
-function preLoad(){
-    $('#body').empty();
-    let options = {};
-    $.when($.post('/setup/autoLoad', options)).done(function(_results){
-        msgPort = _results.port;
-        wsDisplay('body', msgPort);
-    });
-}
 
 function getChainEvents(){
     $.when($.get('fabric/getChainEvents')).done(function(_res){
