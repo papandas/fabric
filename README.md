@@ -18,9 +18,11 @@ Hyperledger Fabric Blockchain Project
 
 - Seller
   - Accept an order
-  - Submit an order to a provider
+  - Submit an order to a provider/supplier
   - Receive Notification of Delivery
   - Request Payment
+  - Resove a Dispute
+  - Refund an Order
 
 - Shipper
   - Receiver Request for Delivery

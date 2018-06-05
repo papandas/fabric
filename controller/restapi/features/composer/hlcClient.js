@@ -122,13 +122,23 @@ exports.orderAction = function (req, res, next) {
                     updateOrder.seller = factory.newRelationship(NS, 'Seller', order.seller.$identifier);
                     break;
                 case 'Order From Supplier':
-
+                    console.log('Order from Supplier entered for '+order.orderNumber+ ' inbound id: '+ req.body.participant+' with order.seller as: '+order.seller.$identifier);
+                    updateOrder = factory.newTransaction(NS, 'OrderFromSupplier');
+                    updateOrder.provider = factory.newRelationship(NS, 'Provider', req.body.provider);
+                    updateOrder.seller = factory.newRelationship(NS, 'Seller', order.seller.$identifier);
                     break;
                 case 'Request Payment':
-
+                    console.log('Request Payment entered');
+                    updateOrder = factory.newTransaction(NS, 'RequestPayment');
+                    updateOrder.seller = factory.newRelationship(NS, 'Seller', order.seller.$identifier);
+                    updateOrder.financeCo = factory.newRelationship(NS, 'FinanceCo', financeCoID);
                     break;
                 case 'Refund':
-
+                    console.log('Refund Payment entered');
+                    updateOrder = factory.newTransaction(NS, 'Refund');
+                    updateOrder.seller = factory.newRelationship(NS, 'Seller', order.seller.$identifier);
+                    updateOrder.financeCo = factory.newRelationship(NS, 'FinanceCo', financeCoID);
+                    updateOrder.refund = req.body.reason;
                     break;
                 case 'Resolve':
                     console.log('Resolve entered');
