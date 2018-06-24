@@ -1,47 +1,37 @@
 { "members":
     [
-        {"type": "Seller", "pw": "bob", "companyName": "PC Hardware, Inc", "id": "bob@pchardwareinc.com"},
-        {"type": "Seller", "pw": "jojo", "companyName": "Inovative Solutions, Inc", "id": "jojo@innovativesolutionsinc.com"},
-        {"type": "Seller", "pw": "mary", "companyName": "The i-Series Experts, Inc", "id": "mary@iseriesexpertsinc.com"},
-        {"type": "Seller", "pw": "wilber", "companyName": "Cooling Systems R Us, Inc", "id": "wilber@coolingsystemsrusinc.com"},
-        {"type": "Seller", "pw": "erin", "companyName": "2nd Life Systems, Inc", "id": "Erin@2ndlifesystemsinc.com"},
-        {"type": "Seller", "pw": "abdul", "companyName": "The Cognitive Advantage, Inc", "id": "abdul@cognitiveadvantageinc.com"},
-        {"type": "Seller", "pw": "aiesha", "companyName": "Cloud Nine Software, Inc", "id": "aiesha@cloudninesoftwareinc.com"},
-        {"type": "Seller", "pw": "joshua", "companyName": "Office Experts, Inc", "id": "joshua@officeexpertsinc.com"},
-        {"type": "Seller", "pw": "alwayson", "companyName": "NonStop, Inc", "id": "alwayson@nonstopinc.com"},
-        {"type": "Seller", "pw": "anytime", "companyName": "Virtual Paper, Inc", "id": "anytime@virtualpaperinc.com"},
-        {"type": "Buyer", "pw": "yes", "companyName": "Software Solutions, Inc", "id": "yes@softwaresolutionsinc.com"},
-        {"type": "Buyer", "pw": "buyer1", "companyName": "Hybrid Cloud Designs, Inc", "id": "buyer1@hybridclouddesignsinc.com"},
-        {"type": "Buyer", "pw": "eric", "companyName": "Born On The Cloud, Inc", "id": "eric@bornonthecloudinc.com"},
-        {"type": "Buyer", "pw": "abby", "companyName": "Kid Friendly Learning, Inc", "id": "abby@kidfriendlyinc.com"},
-        {"type": "Buyer", "pw": "kristen", "companyName": "The Education Game, Inc", "id": "kristen@gameify.com"},
-        {"type": "Buyer", "pw": "speedmatters", "companyName": "Fast Eddy, Inc", "id": "speedmatters@fasteddyinc.com"},
-        {"type": "Buyer", "pw": "wantitnow", "companyName": "The Overnight Experts, Inc", "id": "wantitnow@overnightexpressinc.com"},
-        {"type": "Buyer", "pw": "info", "companyName": "PC Hardware Now, Inc", "id": "info@pchardwarenowinc.com"},
-        {"type": "Buyer", "pw": "power", "companyName": "UPS Systems, Inc", "id": "power@upssystemsinc.com"},
-        {"type": "Buyer", "pw": "online", "companyName": "The App Store, Inc", "id": "online@theappstoreinc.com"},
-        {"type": "Buyer", "pw": "easymoney", "companyName": "The Global Financier", "id": "easymoney@easymoneyinc.com"}
+        {"type": "Seller", "pw": "bob", "companyName": "Distrubuter 1", "id": "distrubuter1@ac.com"},
+        {"type": "Seller", "pw": "jojo", "companyName": "Distrubuter 2", "id": "distrubuter2@ac.com"},
+        {"type": "Seller", "pw": "mary", "companyName": "Distrubuter 3", "id": "distrubuter3@ac.com"},
+        {"type": "Seller", "pw": "wilber", "companyName": "Distrubuter 4", "id": "distrubuter4@ac.com"},
+        {"type": "Seller", "pw": "erin", "companyName": "Distrubuter 5", "id": "distrubuter5@ac.com"},
+        {"type": "Seller", "pw": "abdul", "companyName": "Distrubuter 6", "id": "distrubuter6@ac.com"},
+        {"type": "Buyer", "pw": "b1", "companyName": "Producer 1", "id": "producer1@ac.com"},
+        {"type": "Buyer", "pw": "b2", "companyName": "Producer 2", "id": "producer2@ac.com"},
+        {"type": "Buyer", "pw": "b3", "companyName": "Producer 3", "id": "producer3@ac.com"},
+        {"type": "Buyer", "pw": "b4", "companyName": "Producer 4", "id": "producer4@ac.com"},
+        {"type": "Buyer", "pw": "b5", "companyName": "Producer 5", "id": "producer5@ac.com"},
+        {"type": "Shipper", "pw": "c5", "companyName": "Customer 1", "id": "customer1@ac.com"},
+        {"type": "Shipper", "pw": "c5", "companyName": "Customer 2", "id": "customer2@ac.com"},
+        {"type": "Shipper", "pw": "c5", "companyName": "Customer 3", "id": "customer3@ac.com"}
+
     ],
     "items":
     [
         {"itemNo": 1, "itemDescription": "Potato", "quantity": 2000, "unitPrice": 10},
         {"itemNo": 2, "itemDescription": "Apples", "quantity": 2000, "unitPrice": 20},
         {"itemNo": 3, "itemDescription": "Strawberry", "quantity": 1000, "unitPrice": 30},
-        {"itemNo": 4, "itemDescription": "Blueb", "quantity": 4000, "unitPrice": 35},
+        {"itemNo": 4, "itemDescription": "Blueberry", "quantity": 4000, "unitPrice": 35},
         {"itemNo": 5, "itemDescription": "Blueberries", "quantity": 4000, "unitPrice": 25},
         {"itemNo": 6, "itemDescription": "Wheat", "quantity": 4000, "unitPrice": 15},
         {"itemNo": 7, "itemDescription": "Oat", "quantity": 4000, "unitPrice": 5}
     ],
     "assets":
     [   
-        {"type": "Order", "id": "001", "buyer": "yes@softwaresolutionsinc.com", "seller": "bob@pchardwareinc.com", "items": [{"itemNo": 1, "quantity": 5}, {"itemNo": 2, "quantity": 2}, {"itemNo": 6, "quantity": 2}] },
-        {"type": "Order", "id": "002", "buyer": "yes@softwaresolutionsinc.com", "seller": "jojo@innovativesolutionsinc.com", "items": [{"itemNo": 2, "quantity": 5}, {"itemNo": 8, "quantity": 2}] },
-        {"type": "Order", "id": "003", "buyer": "yes@softwaresolutionsinc.com", "seller": "Erin@2ndlifesystemsinc.com", "items": [{"itemNo": 3, "quantity": 15}, {"itemNo": 4, "quantity": 20}] },
-        {"type": "Order", "id": "004", "buyer": "yes@softwaresolutionsinc.com", "seller": "aiesha@cloudninesoftwareinc.com", "items": [{"itemNo": 1, "quantity": 5}, {"itemNo": 2, "quantity": 2}, {"itemNo": 6, "quantity": 2}] },
-        {"type": "Order", "id": "005", "buyer": "yes@softwaresolutionsinc.com", "seller": "joshua@officeexpertsinc.com", "items": [{"itemNo": 2, "quantity": 5}, {"itemNo": 8, "quantity": 2}] },
-        {"type": "Order", "id": "006", "buyer": "eric@bornonthecloudinc.com", "seller": "Erin@2ndlifesystemsinc.com", "items": [{"itemNo": 3, "quantity": 15}, {"itemNo": 4, "quantity": 20}] },
-        {"type": "Order", "id": "007", "buyer": "eric@bornonthecloudinc.com", "seller": "bob@pchardwareinc.com", "items": [{"itemNo": 1, "quantity": 5}, {"itemNo": 2, "quantity": 2}, {"itemNo": 6, "quantity": 2}] },
-        {"type": "Order", "id": "008", "buyer": "eric@bornonthecloudinc.com", "seller": "jojo@innovativesolutionsinc.com", "items": [{"itemNo": 2, "quantity": 5}, {"itemNo": 8, "quantity": 2}] },
-        {"type": "Order", "id": "009", "buyer": "eric@bornonthecloudinc.com", "seller": "Erin@2ndlifesystemsinc.com", "items": [{"itemNo": 3, "quantity": 15}, {"itemNo": 4, "quantity": 20}] }
+        {"type": "Order", "id": "001", "buyer": "producer1@ac.com", "seller": "distrubuter6@ac.com", "items": [{"itemNo": 1, "quantity": 5}, {"itemNo": 2, "quantity": 2}, {"itemNo": 6, "quantity": 2}] },
+        {"type": "Order", "id": "002", "buyer": "producer1@ac.com", "seller": "distrubuter6@ac.com", "items": [{"itemNo": 2, "quantity": 5}, {"itemNo": 8, "quantity": 2}] },
+        {"type": "Order", "id": "003", "buyer": "producer2@ac.com", "seller": "distrubuter5@ac.com", "items": [{"itemNo": 3, "quantity": 15}, {"itemNo": 4, "quantity": 20}] },
+        {"type": "Order", "id": "004", "buyer": "producer3@ac.com", "seller": "distrubuter5@ac.com", "items": [{"itemNo": 1, "quantity": 5}, {"itemNo": 2, "quantity": 2}, {"itemNo": 6, "quantity": 2}] },
+        {"type": "Order", "id": "005", "buyer": "producer3@ac.com", "seller": "distrubuter4@ac.com", "items": [{"itemNo": 2, "quantity": 5}, {"itemNo": 8, "quantity": 2}] }
     ]
 }

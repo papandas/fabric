@@ -45,15 +45,25 @@ function listMemRegistries(){
         _str += '<h2>Registry List</h2>';
         _str += '<h4>Network update results: '+_results.result+'</h4>';
         _str += '<ul>';
+        _str += '<li>Distrubuter</li>';
+        _str += '<li>Producer</li>';
+        _str += '<li>Customer</li>';
+
+        $('#registryName').append('<option value="Buyer">Distrubuter</option>');
+        $('#registryName').append('<option value="Seller">Producer</option>');
+        $('#registryName').append('<option value="Shipper">Customer</option>');
 
         for (let each in _results.registries){
+            
+
             (function(_idx, _arr){
-                _str += '<li>'+_arr[_idx]+'</li>';
-                $('#registryName').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
-                $('#registryName2').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
-                $('#registryName3').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
-                $('#registryName4').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
-                $('#registryName5').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+                //_str += '<li>'+_arr[_idx]+'</li>';
+                //$('#registryName').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+                //$('#registryName2').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+                //$('#registryName3').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+                //$('#registryName4').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+                //$('#registryName5').append('<option value="'+_arr[_idx]+'">' +_arr[_idx]+'</option>');
+
             })(each, _results.registries)
         }
 
@@ -72,10 +82,10 @@ function listRegistry(){
         let _str = '';
         _str +='<h2>Registry List</h2>';
         _str += '<h4>Network update results: '+_results.result+'</h4>';
-        _str += '<table width="100%"><tr><th>Type</th><th>Company</th><th>email</th></tr>';
+        _str += '<table width="100%"><tr><th>Company</th><th>email</th></tr>';
         for (let each in _results.members){
             (function(_idx, _arr){
-                _str += '<tr><td>'+_arr[_idx].type+'</td><td>'+_arr[_idx].companyName+'</td><td>'+_arr[_idx].id+'</td></tr>';
+                _str += '<tr><td>'+_arr[_idx].companyName+'</td><td>'+_arr[_idx].id+'</td></tr>';
             })(each, _results.members);
         }
         _str += '</ul>';
@@ -125,6 +135,14 @@ function issueIdentity(){
 
 function issueIdentity(){
 
+}
+
+function listProduct(){
+    console.log("Show lis of products")
+    $.when($.get(toLoad), $.get('/composer/client/getItemTable')).done(function (page, _items)
+    {
+        console.log(_items);
+    });
 }
 
 function listAssets(){

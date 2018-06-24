@@ -50,11 +50,11 @@ exports.getMyOrders = function (req, res, next) {
         ser = bnd.getSerializer();
         //
         // v0.14
-        return businessNetworkConnection.connect(config.composer.connectionProfile, config.composer.network, req.body.userID, req.body.secret)
+        //return businessNetworkConnection.connect(config.composer.connectionProfile, config.composer.network, req.body.userID, req.body.secret)
         //
         // v0.15
         //console.log(method+' req.body.userID is: '+req.body.userID );
-        //return businessNetworkConnection.connect(req.body.userID)
+        return businessNetworkConnection.connect(req.body.userID)
         .then(() => {
             return businessNetworkConnection.query('selectOrders')
             .then((orders) => {

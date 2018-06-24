@@ -1,7 +1,7 @@
 {
   "index": {"language": "English",
-    "title": "Agrichain",
-    "header": "Agrichain - Blochchain based solution for Goods & Services",
+    "title": "AgriChain",
+    "header": "AgriChain - Blockchain solution for food supply chain.",
     "titleBar": "Agrichain",
     "idx_unified": "load Unified User Experience",
     "idx_buyer": "load Producer UI",
@@ -50,7 +50,7 @@
     "rm_lr_api": "list members of a registry",
     "rm_la_api": "List Assets in the registry",
     "rm_la_param": "(none)",
-    "rm_am_api": "Add Member",
+    "rm_am_api": "Show Participant List",
     "rm_am_param": "Co Name, id, Type",
     "rm_rm_api": "Remove Member",
     "rm_gs_api": "get Member Secret",
@@ -69,7 +69,7 @@
   },
   "buyer": {
     "title": "Buyer . Select Buyer to see their view: ",
-    "newOrder": "Create New Order",
+    "newOrder": "Sell Crop",
     "orderStatus": "Display Order Status"
   },
   "createConnectionProfile": {

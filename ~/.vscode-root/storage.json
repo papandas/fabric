@@ -444,5 +444,19 @@
         }
     },
     "theme": "vs-dark vscode-theme-defaults-themes-dark_plus-json",
-    "themeBackground": "#1e1e1e"
+    "themeBackground": "#1e1e1e",
+    "windowsState": {
+        "openedWindows": [],
+        "lastActiveWindow": {
+            "folderPath": "/home/desktop/workspace/hyperledger/fabricv1",
+            "backupPath": "/home/desktop/workspace/hyperledger/fabricv1/~/.vscode-root/Backups/31e05812731262b49ed2aa3d9af52731",
+            "uiState": {
+                "mode": 0,
+                "x": 65,
+                "y": 24,
+                "width": 1535,
+                "height": 876
+            }
+        }
+    }
 }

@@ -11,6 +11,7 @@
         </table>
         <h3 id="bnm" style="display: none;" ></h3>
         <table id="businessNetworkManagement" width="98%" style="display: none;"><tr><th id="bnm_api"></th><th id="bnm_param"></th></tr>
+          <tr><td onclick="listProduct()" class="showfocus" id="bnm_nd_api">List of Assets</td><td id="rm_la_param" style="display: none;"></td></tr>
           <tr><td onclick="networkDeploy()" class="showfocus" id="bnm_nd_api"></td><td id="bnm_nd_param"></td></tr>
           <tr><td onclick="networkInstall()" class="showfocus" id="bnm_ni_api"></td><td id="bnm_ni_param"></td></tr>
           <tr><td onclick="networkStart()" id="bnm_ns_api"></td><td id="bnm_ns_param"></td></tr>
@@ -20,9 +21,9 @@
           <tr><td onclick="networkUpdate()" class="showfocus" id="bnm_nuu_api"></td><td id="bnm_nuu_param"></td></tr>
         </table>
         <h3 id="rm"></h3>
-        <table id="resourceManagement" width="98%"><tr><th id="rm_api"></th><th id="rm_param"  style="display: none;"></th></tr>
-          <tr><td onclick="listRegistry()" class="showfocus" id="rm_lr_api">y</td><td style="display: none;"><select id="registryName" width="25%"></td></tr>
-          <tr><td onclick="listAssets()" class="showfocus" id="rm_la_api"></td><td id="rm_la_param" style="display: none;"></td></tr>
+        <table id="resourceManagement" width="98%"><tr><th id="rm_api"></th><th id="rm_param" ></th></tr>
+          <tr><td onclick="listRegistry()" class="showfocus" id="rm_am_api"></td><td ><select id="registryName" width="25%"></td></tr>
+          <tr><td onclick="listAssets()" class="showfocus" id="rm_la_api"></td><td id="rm_la_param"></td></tr>
           <tr><td onclick="addMember()" class="showfocus" id="rm_am_api"></td><td id="rm_am_param" style="display: none;"></td></tr>
           <tr><td onclick="issueIdentity()" class="showfocus" id="rm_ii_api"></td><td style="display: none;"><select id="registryName2" width="25%"></select></td></tr>
           <tr><td onclick="checkCard()" class="showfocus" id="rm_cc_api"></td><td style="display: none;"><select id="registryName3" width="25%"></select></td></tr>
