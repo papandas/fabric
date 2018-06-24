@@ -451,7 +451,7 @@ exports.getAssets = function(req, res, next) {
     let allOrders = new Array();
     let businessNetworkConnection;
     let serializer;
-    let archiveFile = fs.readFileSync(path.join(path.dirname(require.main.filename),'network','dist','zerotoblockchain-network.bna'));
+    let archiveFile = fs.readFileSync(path.join(path.dirname(require.main.filename),'network','dist','agrichain-network.bna'));
     businessNetworkConnection = new BusinessNetworkConnection();
     return BusinessNetworkDefinition.fromArchive(archiveFile)
         .then((bnd)=>{
@@ -582,7 +582,7 @@ exports.getHistory = function(req, res, next) {
     let allHistory = new Array();
     let businessNetworkConnection;
     let ser;
-    let archiveFile = fs.readFileSync(path.join(path.dirname(require.main.filename),'network','dist','zerotoblockchain-network.bna'));
+    let archiveFile = fs.readFileSync(path.join(path.dirname(require.main.filename),'network','dist','agrichain-network.bna'));
     return BusinessNetworkDefinition.fromArchive(archiveFile)
     .then((bnd) => {
         ser = bnd.getSerializer();

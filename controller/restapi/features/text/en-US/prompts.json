@@ -1,17 +1,17 @@
 {
   "index": {"language": "English",
-    "title": "Z2B ",
-    "header": "Building the Buyer User Experience",
-    "titleBar": "Hyperledger Project",
+    "title": "Agrichain",
+    "header": "Agrichain - Blochchain based solution for Goods & Services",
+    "titleBar": "Agrichain",
     "idx_unified": "load Unified User Experience",
-    "idx_buyer": "load Buyer User Experience",
-    "idx_seller": "load Seller User Experience",
+    "idx_buyer": "load Producer UI",
+    "idx_seller": "load Distributer UI",
     "idx_provider": "load Provider User Experience",
     "idx_shipper": "load Shipper User Experience",
     "idx_financeco": "load Finance Company User Experience",
     "idx_roles": "Roles",
     "idx_admin": "Admin",
-    "idx_adminUX": "load Admin User Experience",
+    "idx_adminUX": "load Admin UI",
     "idx_preload": "Preload Network. Please wait."
   },
   "admin": {

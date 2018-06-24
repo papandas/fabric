@@ -47,14 +47,14 @@ function printHelp ()
 function printHeader ()
 {
     echo ""
-    echo -e "${YELLOW}archive creation script for the Zero To Blockchain Series" | indent
+    echo -e "${YELLOW}archive creation script for the IBM Blockchain Series" | indent
     echo -e "${GREEN}This has been tested on Mac OSX thru High Sierra and Ubuntu V16 LTS" | indent
     echo -e "${YELLOW}This script will create your Composer archive" | indent
     echo ""
 }
 # get the command line options
 
-NETWORK_NAME="zerotoblockchain-network"
+NETWORK_NAME="agrichain-network"
 
  while getopts "h:n:" opt; 
 do

@@ -54,7 +54,7 @@ function printHeader ()
 }
 # get the command line options
 
-NETWORK_NAME="zerotoblockchain-network"
+NETWORK_NAME="agrichain-network"
 
  while getopts "h:n:" opt; 
 do

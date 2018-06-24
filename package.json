@@ -2,13 +2,13 @@
   "engines": {
     "composer": ""
   },
-  "name": "blockchain-network",
+  "name": "agrichain-network",
   "version": "0.1.6",
-  "description": "Multi-Party Finance Network",
+  "description": "Multi-Party Goods Network",
   "networkImage": "https://hyperledger.github.io/composer-sample-networks/packages/basic-sample-network/networkimage.svg",
   "networkImageanimated": "https://hyperledger.github.io/composer-sample-networks/packages/basic-sample-network/networkimageanimated.svg",
   "scripts": {
-    "prepublish": "mkdirp ./network/dist && composer archive create --sourceType dir --sourceName . -a ./network/dist/zerotoblockchain-network.bna",
+    "prepublish": "mkdirp ./network/dist && composer archive create --sourceType dir --sourceName . -a ./network/dist/agrichain-network.bna",
     "pretest": "npm run lint",
     "lint": "eslint ./network",
     "postlint": "npm run licchk",
@@ -25,9 +25,7 @@
     "url": "https://github.com/papandas/fabric"
   },
   "keywords": [
-    "zero",
     "blockchain",
-    "tutorial",
     "composer",
     "hyperledger"
   ],

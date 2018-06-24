@@ -15,23 +15,22 @@
         {"type": "Buyer", "pw": "eric", "companyName": "Born On The Cloud, Inc", "id": "eric@bornonthecloudinc.com"},
         {"type": "Buyer", "pw": "abby", "companyName": "Kid Friendly Learning, Inc", "id": "abby@kidfriendlyinc.com"},
         {"type": "Buyer", "pw": "kristen", "companyName": "The Education Game, Inc", "id": "kristen@gameify.com"},
-        {"type": "Shipper", "pw": "speedmatters", "companyName": "Fast Eddy, Inc", "id": "speedmatters@fasteddyinc.com"},
-        {"type": "Shipper", "pw": "wantitnow", "companyName": "The Overnight Experts, Inc", "id": "wantitnow@overnightexpressinc.com"},
-        {"type": "Provider", "pw": "info", "companyName": "PC Hardware Now, Inc", "id": "info@pchardwarenowinc.com"},
-        {"type": "Provider", "pw": "power", "companyName": "UPS Systems, Inc", "id": "power@upssystemsinc.com"},
-        {"type": "Provider", "pw": "online", "companyName": "The App Store, Inc", "id": "online@theappstoreinc.com"},
-        {"type": "FinanceCo", "pw": "easymoney", "companyName": "The Global Financier", "id": "easymoney@easymoneyinc.com"}
+        {"type": "Buyer", "pw": "speedmatters", "companyName": "Fast Eddy, Inc", "id": "speedmatters@fasteddyinc.com"},
+        {"type": "Buyer", "pw": "wantitnow", "companyName": "The Overnight Experts, Inc", "id": "wantitnow@overnightexpressinc.com"},
+        {"type": "Buyer", "pw": "info", "companyName": "PC Hardware Now, Inc", "id": "info@pchardwarenowinc.com"},
+        {"type": "Buyer", "pw": "power", "companyName": "UPS Systems, Inc", "id": "power@upssystemsinc.com"},
+        {"type": "Buyer", "pw": "online", "companyName": "The App Store, Inc", "id": "online@theappstoreinc.com"},
+        {"type": "Buyer", "pw": "easymoney", "companyName": "The Global Financier", "id": "easymoney@easymoneyinc.com"}
     ],
     "items":
     [
-        {"itemNo": 1, "itemDescription": "Macbook Pro 16Gb, 1Tb", "quantity": 2000, "unitPrice": 1285},
-        {"itemNo": 2, "itemDescription": "Macbook Pro 8Gb, .5Tb", "quantity": 2000, "unitPrice": 985},
-        {"itemNo": 3, "itemDescription": "Lenovo Thinkpad W520 16Gb, .25Tb", "quantity": 1000, "unitPrice": 500},
-        {"itemNo": 4, "itemDescription": "Lenovo Thinkpad W520 32Gb, 1Tb", "quantity": 4000, "unitPrice": 1565},
-        {"itemNo": 5, "itemDescription": "4K Monitor - 25", "quantity": 4000, "unitPrice": 265},
-        {"itemNo": 6, "itemDescription": "4K Monitor - 32", "quantity": 4000, "unitPrice": 365},
-        {"itemNo": 7, "itemDescription": "4K Monitor - 37", "quantity": 4000, "unitPrice": 465},
-        {"itemNo": 8, "itemDescription": "4K Monitor - 42", "quantity": 4000, "unitPrice": 565}
+        {"itemNo": 1, "itemDescription": "Potato", "quantity": 2000, "unitPrice": 10},
+        {"itemNo": 2, "itemDescription": "Apples", "quantity": 2000, "unitPrice": 20},
+        {"itemNo": 3, "itemDescription": "Strawberry", "quantity": 1000, "unitPrice": 30},
+        {"itemNo": 4, "itemDescription": "Blueb", "quantity": 4000, "unitPrice": 35},
+        {"itemNo": 5, "itemDescription": "Blueberries", "quantity": 4000, "unitPrice": 25},
+        {"itemNo": 6, "itemDescription": "Wheat", "quantity": 4000, "unitPrice": 15},
+        {"itemNo": 7, "itemDescription": "Oat", "quantity": 4000, "unitPrice": 5}
     ],
     "assets":
     [   
